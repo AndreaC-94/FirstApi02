@@ -8,20 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FactorialController {
 
-//    @Autowired
-//    FactorialService service;
+    @Autowired
+    FactorialService service;
 
     @GetMapping ("/factorial/{num}")
     public int factiorial(@PathVariable(name = "num") int num){
-        if (num <= 0) return 0;
-        int tot = 1;
-        while(num > 1){
-            tot = tot * num;
-            num--;
-        }
-        return tot;
-//        return service.factorial(num);
-        /* Questo return l'ho provato con la classe service, ma non funziona, sembra come se entra in loop
-        * cosa sto sbagliando? */
+        if (num > 50) return 0;
+        else return service.factorial(num);
     }
 }
